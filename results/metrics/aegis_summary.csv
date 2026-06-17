@@ -1,0 +1,7 @@
+model,split,f1_illicit,precision_illicit,recall_illicit,pr_auc,n,n_illicit
+aegis_gated,val,0.8749,0.9771,0.7921,0.9042,9983,914
+aegis_gated,test,0.0221,0.1667,0.0118,0.0363,6687,169
+aegis_uniform,val,0.8778,0.9759,0.7976,0.9009,9983,914
+aegis_uniform,test,0.0215,0.1176,0.0118,0.0331,6687,169
+hybrid_single,val,0.8761,0.9733,0.7965,0.9056,9983,914
+hybrid_single,test,0.022,0.1538,0.0118,0.0348,6687,169

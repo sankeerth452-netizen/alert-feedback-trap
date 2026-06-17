@@ -1,0 +1,5 @@
+setting,f1_illicit,precision_illicit,recall_illicit,pr_auc,n,n_illicit
+D0 static (collapse ref),0.0282,0.0682,0.0178,0.0451,6687,169
+D1 static + val labels,0.1263,0.5714,0.071,0.4202,6687,169
+D2 oracle adapt (2 steps),0.0305,0.2,0.0165,0.2201,3726,121
+D3 oracle adapt (3 steps),0.0339,1.0,0.0172,0.4073,2505,116

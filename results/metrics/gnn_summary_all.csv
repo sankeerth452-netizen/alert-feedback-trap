@@ -1,0 +1,7 @@
+model,split,f1_illicit,precision_illicit,recall_illicit,pr_auc,n,n_illicit
+gcn,val,0.7559,0.8039,0.7133,0.7892,9983,914
+gcn,test,0.0079,0.0119,0.0059,0.0328,6687,169
+gat,val,0.667,0.623,0.7177,0.7544,9983,914
+gat,test,0.0431,0.0794,0.0296,0.0406,6687,169
+graphsage,val,0.8108,0.8303,0.7921,0.8533,9983,914
+graphsage,test,0.0261,0.0492,0.0178,0.0542,6687,169

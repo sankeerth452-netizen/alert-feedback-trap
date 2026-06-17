@@ -1,0 +1,15 @@
+models:
+  gcn: {}
+  gat:
+    heads: 4
+  graphsage: {}
+
+common:
+  hidden_dim: 128
+  num_layers: 2
+  dropout: 0.5
+  lr: 0.01
+  weight_decay: 0.0005
+  max_epochs: 300
+  patience: 25          # early stopping on val F1
+  undirected: true      # symmetrize edges for message passing

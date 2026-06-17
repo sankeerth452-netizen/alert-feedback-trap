@@ -1,0 +1,17 @@
+seed: 42
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  results_metrics: results/metrics
+  results_figures: results/figures
+
+data:
+  features_file: elliptic_txs_features.csv
+  classes_file: elliptic_txs_classes.csv
+  edges_file: elliptic_txs_edgelist.csv
+
+split:
+  train_end: 34      # time steps 1-34 -> train
+  val_end: 42        # 35-42 -> validation
+  test_end: 49       # 43-49 -> test (post-drift regime)

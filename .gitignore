@@ -1,0 +1,15 @@
+.idea/
+venv/
+.venv/
+
+__pycache__/
+*.pyc
+
+*.pt
+*.pth
+*.ckpt
+
+data/
+datasets/
+
+.DS_Store

@@ -1,0 +1,4 @@
+mode,mean_pr_auc,mean_p_at_k,total_caught,total_illicit
+adaptive_budget,0.1144,0.0229,8,169
+adaptive_full,0.3476,0.28,98,169
+static,0.1163,0.04,14,169

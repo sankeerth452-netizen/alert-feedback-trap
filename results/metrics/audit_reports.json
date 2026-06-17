@@ -1,0 +1,197 @@
+[
+  {
+    "txId": 69746416,
+    "time_step": 35,
+    "alert_score": 1.0,
+    "drift_status": {
+      "psi_z": 1.49,
+      "alarm": false
+    },
+    "graph_context": {
+      "n_neighbors": 2,
+      "n_neighbors_known_illicit": 0,
+      "n_neighbors_known_licit": 0
+    },
+    "evidence": [
+      {
+        "feature": "feat_52",
+        "shap": 7.2518,
+        "value_percentile_vs_licit": 9.0,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_75",
+        "shap": 3.1171,
+        "value_percentile_vs_licit": 77.4,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_60",
+        "shap": 2.2843,
+        "value_percentile_vs_licit": 30.1,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_89",
+        "shap": 1.6697,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_1",
+        "shap": 1.4438,
+        "value_percentile_vs_licit": 66.2,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_2",
+        "shap": 1.2219,
+        "value_percentile_vs_licit": 75.6,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_162",
+        "shap": 1.2037,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_4",
+        "shap": 1.1167,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      }
+    ],
+    "note": "Feature semantics anonymized in the Elliptic benchmark; in deployment, map evidence features to FATF red-flag indicator categories."
+  },
+  {
+    "txId": 30585812,
+    "time_step": 37,
+    "alert_score": 1.0,
+    "drift_status": {
+      "psi_z": 2.93,
+      "alarm": true
+    },
+    "graph_context": {
+      "n_neighbors": 1,
+      "n_neighbors_known_illicit": 0,
+      "n_neighbors_known_licit": 0
+    },
+    "evidence": [
+      {
+        "feature": "feat_52",
+        "shap": 7.0155,
+        "value_percentile_vs_licit": 6.1,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_75",
+        "shap": 3.1655,
+        "value_percentile_vs_licit": 78.1,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_60",
+        "shap": 2.3023,
+        "value_percentile_vs_licit": 31.3,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_89",
+        "shap": 1.7097,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_1",
+        "shap": 1.5453,
+        "value_percentile_vs_licit": 68.2,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_162",
+        "shap": 1.2836,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_4",
+        "shap": 1.1505,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_160",
+        "shap": 1.0708,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      }
+    ],
+    "note": "Feature semantics anonymized in the Elliptic benchmark; in deployment, map evidence features to FATF red-flag indicator categories."
+  },
+  {
+    "txId": 69774121,
+    "time_step": 35,
+    "alert_score": 1.0,
+    "drift_status": {
+      "psi_z": 1.49,
+      "alarm": false
+    },
+    "graph_context": {
+      "n_neighbors": 1,
+      "n_neighbors_known_illicit": 0,
+      "n_neighbors_known_licit": 0
+    },
+    "evidence": [
+      {
+        "feature": "feat_52",
+        "shap": 6.1697,
+        "value_percentile_vs_licit": 7.4,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_75",
+        "shap": 3.0518,
+        "value_percentile_vs_licit": 86.9,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_89",
+        "shap": 2.3913,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_60",
+        "shap": 2.2596,
+        "value_percentile_vs_licit": 44.5,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_1",
+        "shap": 1.6139,
+        "value_percentile_vs_licit": 65.7,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_4",
+        "shap": 1.3145,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_131",
+        "shap": 0.9704,
+        "value_percentile_vs_licit": 0.0,
+        "direction": "raises suspicion"
+      },
+      {
+        "feature": "feat_2",
+        "shap": 0.9109,
+        "value_percentile_vs_licit": 75.6,
+        "direction": "raises suspicion"
+      }
+    ],
+    "note": "Feature semantics anonymized in the Elliptic benchmark; in deployment, map evidence features to FATF red-flag indicator categories."
+  }
+]

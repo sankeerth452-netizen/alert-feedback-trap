@@ -1,0 +1,3 @@
+model,split,f1_illicit,precision_illicit,recall_illicit,pr_auc,n,n_illicit
+lightgbm,val,0.9099,0.9566,0.8676,0.9201,9983,914
+lightgbm,test,0.0282,0.0682,0.0178,0.0451,6687,169

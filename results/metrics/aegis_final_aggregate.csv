@@ -1,0 +1,5 @@
+mode,pr_auc_mean,pr_auc_std,p_at_k_mean,caught_mean,caught_std
+adaptive_budget,0.1144,0.0,0.0229,8.0,0.0
+adaptive_full,0.3476,0.0,0.28,98.0,0.0
+aegis_cg,0.1493,0.0116,0.0571,20.0,6.9642
+static,0.1163,0.0,0.04,14.0,0.0
