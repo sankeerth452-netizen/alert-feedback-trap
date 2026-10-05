@@ -1,0 +1,94 @@
+{
+ "platform": "macOS-26.2-arm64-arm-64bit-Mach-O",
+ "python": "3.14.4",
+ "lightgbm": "4.6.0",
+ "sklearn": "1.9.0",
+ "numpy": "2.4.6",
+ "all_match": true,
+ "checks": [
+  {
+   "check": "frozen step-34 (paper 14)",
+   "expected": 14,
+   "got": 14,
+   "match": true
+  },
+  {
+   "check": "frozen step-42 (paper 113)",
+   "expected": 113,
+   "got": 113,
+   "match": true
+  },
+  {
+   "check": "AEGIS alert-only greedy, step-42 (paper 93)",
+   "expected": 93,
+   "got": 93,
+   "match": true
+  },
+  {
+   "check": "replace, step-42 (paper 74)",
+   "expected": 74,
+   "got": 74,
+   "match": true
+  },
+  {
+   "check": "average, step-42 (paper 89)",
+   "expected": 89,
+   "got": 89,
+   "match": true
+  },
+  {
+   "check": "AEGIS eps=0.2 step-34 seed 42 (trap_seeds 18)",
+   "expected": 18,
+   "got": 18,
+   "match": true
+  },
+  {
+   "check": "frontier greedy k=50 (csv 10)",
+   "expected": 10,
+   "got": 10,
+   "match": true
+  },
+  {
+   "check": "frontier greedy k=75 (csv 19)",
+   "expected": 19,
+   "got": 19,
+   "match": true
+  },
+  {
+   "check": "frontier greedy k=95 (csv 52)",
+   "expected": 52,
+   "got": 52,
+   "match": true
+  },
+  {
+   "check": "frontier eps10 k=75 seed 42 (csv 37)",
+   "expected": 37,
+   "got": 37,
+   "match": true
+  },
+  {
+   "check": "frontier eps10 k=75 seed 43 (csv 62)",
+   "expected": 62,
+   "got": 62,
+   "match": true
+  },
+  {
+   "check": "frontier eps10 k=75 seed 44 (csv 21)",
+   "expected": 21,
+   "got": 21,
+   "match": true
+  },
+  {
+   "check": "frontier eps10 k=75 seed 45 (csv 57)",
+   "expected": 57,
+   "got": 57,
+   "match": true
+  },
+  {
+   "check": "frontier eps10 k=75 seed 46 (csv 51)",
+   "expected": 51,
+   "got": 51,
+   "match": true
+  }
+ ]
+}

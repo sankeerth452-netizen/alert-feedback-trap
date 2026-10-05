@@ -1,0 +1,229 @@
+== Reproduction check: macOS-26.2-arm64-arm-64bit-Mach-O | py 3.14.4 | lightgbm 4.6.0 | all_match=True
+   OK frozen step-34 (paper 14)                            exp   14 got   14
+   OK frozen step-42 (paper 113)                           exp  113 got  113
+   OK AEGIS alert-only greedy, step-42 (paper 93)          exp   93 got   93
+   OK replace, step-42 (paper 74)                          exp   74 got   74
+   OK average, step-42 (paper 89)                          exp   89 got   89
+   OK AEGIS eps=0.2 step-34 seed 42 (trap_seeds 18)        exp   18 got   18
+   OK frontier greedy k=50 (csv 10)                        exp   10 got   10
+   OK frontier greedy k=75 (csv 19)                        exp   19 got   19
+   OK frontier greedy k=95 (csv 52)                        exp   52 got   52
+   OK frontier eps10 k=75 seed 42 (csv 37)                 exp   37 got   37
+   OK frontier eps10 k=75 seed 43 (csv 62)                 exp   62 got   62
+   OK frontier eps10 k=75 seed 44 (csv 21)                 exp   21 got   21
+   OK frontier eps10 k=75 seed 45 (csv 57)                 exp   57 got   57
+   OK frontier eps10 k=75 seed 46 (csv 51)                 exp   51 got   51
+
+== Retrainer comparison, k=50 (non-bootstrap; mean ± sd over seeds; greedy arms are deterministic)
+-- base trained through step 42
+   cumulative | eps10                     n= 10  caught@topk  131.3 ±  1.8   investigated  122.4 ±  1.3
+   cumulative+IPW | eps20                 n=  5  caught@topk  130.2 ±  1.3   investigated  114.4 ±  1.8
+   cumulative | eps20                     n=  5  caught@topk  130.0 ±  2.7   investigated  114.2 ±  1.1
+   cumulative | greedy                    n=  1  caught@topk  130.0          investigated  130.0       
+   cumulative+IPW | eps10                 n= 10  caught@topk  129.2 ±  1.3   investigated  121.7 ±  1.5
+   AEGIS+RI | greedy                      n=  1  caught@topk  118.0          investigated  118.0       
+   AEGIS+RI | eps20                       n= 10  caught@topk  117.5 ±  1.1   investigated  103.1 ±  3.1
+   AEGIS+RI | eps10                       n= 10  caught@topk  117.0 ±  0.0   investigated  110.6 ±  0.7
+   frozen                                 n=  1  caught@topk  113.0          investigated  113.0       
+   AEGIS+IPW | eps20                      n= 30  caught@topk  104.5 ±  3.5   investigated   93.2 ±  3.2
+   AEGIS | eps20                          n= 30  caught@topk  102.4 ±  2.4   investigated   90.2 ±  3.0
+   AEGIS+IPW | eps10                      n= 30  caught@topk  101.9 ±  3.3   investigated   95.1 ±  3.5
+   AEGIS | eps10                          n= 30  caught@topk   97.6 ±  3.1   investigated   90.5 ±  3.5
+   AEGIS | greedy                         n=  1  caught@topk   93.0          investigated   93.0       
+   alerts-only (no history) | eps20       n= 10  caught@topk   79.8 ±  9.4   investigated   71.7 ±  8.8
+   alerts-only (no history) | eps10       n= 10  caught@topk   79.0 ±  3.6   investigated   74.9 ±  4.5
+   alerts-only (no history) | greedy      n=  1  caught@topk   74.0          investigated   74.0       
+-- base trained through step 34
+   cumulative | greedy                    n=  1  caught@topk   79.0          investigated   79.0       
+   cumulative | eps20                     n=  5  caught@topk   78.6 ±  1.8   investigated   68.4 ±  3.0
+   cumulative | eps10                     n= 10  caught@topk   77.0 ±  3.9   investigated   72.4 ±  5.0
+   cumulative+IPW | eps10                 n= 10  caught@topk   73.4 ± 10.0   investigated   69.0 ±  9.1
+   cumulative+IPW | eps20                 n=  5  caught@topk   71.4 ±  7.7   investigated   61.0 ±  9.0
+   alerts-only (no history) | eps10       n= 10  caught@topk   55.1 ± 19.1   investigated   51.4 ± 18.3
+   alerts-only (no history) | greedy      n=  1  caught@topk   46.0          investigated   46.0       
+   alerts-only (no history) | eps20       n= 10  caught@topk   41.2 ± 21.8   investigated   36.8 ± 17.7
+   AEGIS | eps10                          n= 30  caught@topk   24.3 ± 12.9   investigated   23.2 ± 12.3
+   AEGIS+IPW | eps10                      n= 30  caught@topk   21.8 ± 11.5   investigated   21.1 ± 10.7
+   AEGIS+IPW | eps20                      n= 30  caught@topk   20.6 ± 13.1   investigated   20.0 ± 11.6
+   AEGIS | eps20                          n= 30  caught@topk   19.2 ±  9.6   investigated   18.0 ±  8.3
+   AEGIS+RI | eps20                       n= 10  caught@topk   14.4 ±  0.7   investigated   12.9 ±  1.4
+   AEGIS+RI | eps10                       n= 10  caught@topk   14.0 ±  0.0   investigated   14.0 ±  0.9
+   AEGIS+RI | greedy                      n=  1  caught@topk   14.0          investigated   14.0       
+   frozen                                 n=  1  caught@topk   14.0          investigated   14.0       
+   AEGIS | greedy                         n=  1  caught@topk   10.0          investigated   10.0       
+   step-34 base, k=25: cumulative | greedy            caught_inv=12
+   step-34 base, k=100: cumulative | greedy            caught_inv=120
+
+== Transaction bootstrap: boot42 (95% percentile intervals)
+   te=42 AEGIS | eps10                      B=200  mean   96.2  95% [ 78.0, 113.1] | vs frozen: Δ  -13.4 [-30.0,  +1.0]  P(arm<frozen)=0.94
+   te=42 AEGIS | eps20                      B=200  mean  100.0  95% [ 81.0, 119.0] | vs frozen: Δ   -9.6 [-23.0,  +4.0]  P(arm<frozen)=0.90
+   te=42 AEGIS | greedy                     B=200  mean   88.5  95% [ 68.0, 108.0] | vs frozen: Δ  -21.2 [-40.0,  -6.0]  P(arm<frozen)=1.00
+   te=42 AEGIS+IPW | eps10                  B=200  mean  100.6  95% [ 83.0, 118.0] | vs frozen: Δ   -9.1 [-22.0,  +4.0]  P(arm<frozen)=0.86
+   te=42 average | greedy                   B=200  mean   83.3  95% [ 65.0, 106.0] | vs frozen: Δ  -26.4 [-44.0, -10.0]  P(arm<frozen)=1.00
+   te=42 frozen                             B=200  mean  109.7  95% [ 96.0, 126.0]
+   te=42 replace | greedy                   B=200  mean   65.3  95% [ 38.0,  89.0] | vs frozen: Δ  -44.4 [-73.0, -23.0]  P(arm<frozen)=1.00
+
+== Transaction bootstrap: boot34 (95% percentile intervals)
+   te=34 AEGIS | eps20                      B=200  mean   19.4  95% [  8.0,  51.0] | vs frozen: Δ   +2.7 [ -9.0, +32.0]  P(arm<frozen)=0.51
+   te=34 AEGIS | greedy                     B=200  mean   20.6  95% [  7.0,  51.1] | vs frozen: Δ   +3.9 [ -9.0, +30.1]  P(arm<frozen)=0.39
+   te=34 frozen                             B=200  mean   16.7  95% [  9.0,  24.0]
+
+== Transaction bootstrap: boot_cum (95% percentile intervals)
+   te=42 AEGIS+RI | greedy                  B= 40  mean  114.1  95% [ 99.8, 129.0] | vs frozen: Δ   +3.5 [ -6.2, +12.0]  P(arm<frozen)=0.15
+   te=42 cumulative | greedy                B= 40  mean  126.7  95% [112.0, 143.1] | vs frozen: Δ  +16.1 [ +9.0, +23.1]  P(arm<frozen)=0.00
+   te=34 cumulative | greedy                B= 20  mean   73.0  95% [ 42.7,  91.1] | vs frozen: Δ  +56.6 [+31.5, +74.0]  P(arm<frozen)=0.00
+
+== Transaction bootstrap: boot_bulk (95% percentile intervals)
+   te=42 bulk                               B= 30  mean  112.5  95% [ 94.2, 131.6] | vs frozen: Δ   +2.1 [-11.4, +13.0]  P(arm<frozen)=0.30
+   te=34 bulk                               B= 30  mean   83.3  95% [ 65.7, 100.8] | vs frozen: Δ  +66.8 [+45.9, +84.5]  P(arm<frozen)=0.00
+
+== Gate/trigger sensitivity, step-42 base, k=50 (greedy = deterministic; eps10 = mean ± sd, 10 seeds)
+   min_pos=3      greedy   93   eps10   98.5 ±  2.3
+   min_pos=5    * greedy   93   eps10   98.5 ±  2.2
+   min_pos=10     greedy   93   eps10   98.5 ±  2.3
+   min_pos=20     greedy   93   eps10   98.5 ±  2.3
+   window =2      greedy   69   eps10   80.3 ±  8.4
+   window =4      greedy   86   eps10   92.1 ±  2.0
+   window =8    * greedy   93   eps10   98.5 ±  2.2
+   window =12     greedy   93   eps10   98.5 ±  2.3
+   tau    =0.02   greedy   98   eps10   99.1 ±  1.0
+   tau    =0.05   greedy   97   eps10   98.8 ±  2.2
+   tau    =0.1  * greedy   93   eps10   98.5 ±  2.2
+   tau    =0.2    greedy   92   eps10   97.0 ±  2.9
+   tau    =0.5    greedy   91   eps10   95.3 ±  2.4
+   ema    =0.3    greedy   99   eps10   98.9 ±  2.0
+   ema    =0.6  * greedy   93   eps10   98.5 ±  2.2
+   ema    =0.9    greedy   91   eps10   95.9 ±  2.4
+   (* = paper default)
+
+== Expert window length on the cold-start frontier (step-34 base): caught_inv, P(ignite)
+   k= 50 W= 2  greedy   17  eps10   15.8 ±  7.8  P(ign) 2/20 [0.03,0.30]
+   k= 50 W= 4  greedy   14  eps10   31.1 ± 15.4  P(ign) 9/20 [0.26,0.66]
+   k= 50 W= 8  greedy   10  eps10   22.1 ± 10.6  P(ign) 2/20 [0.03,0.30]
+   k= 50 W=12  greedy   12  eps10   30.8 ±  9.5  P(ign) 7/20 [0.18,0.57]
+   k= 75 W= 2  greedy   17  eps10   26.1 ± 17.5  P(ign) 3/20 [0.05,0.36]
+   k= 75 W= 4  greedy   57  eps10   32.9 ± 15.6  P(ign) 7/20 [0.18,0.57]
+   k= 75 W= 8  greedy   19  eps10   42.9 ± 16.7  P(ign) 12/20 [0.39,0.78]
+   k= 75 W=12  greedy   38  eps10   46.4 ± 15.9  P(ign) 14/20 [0.48,0.85]
+   k=100 W= 2  greedy   58  eps10   45.2 ± 15.2  P(ign) 14/20 [0.48,0.85]
+   k=100 W= 4  greedy   87  eps10   52.3 ± 18.3  P(ign) 16/20 [0.58,0.92]
+   k=100 W= 8  greedy   55  eps10   49.6 ± 14.5  P(ign) 17/20 [0.64,0.95]
+   k=100 W=12  greedy   54  eps10   61.9 ± 19.0  P(ign) 18/20 [0.70,0.97]
+
+== Ignition: ignite_seeds  (ignited := caught_inv >= 35; Wilson 95% CI)
+   eps10  k= 50 n= 50  caught   20.7 ± 10.4  P(ign)=0.08 [0.03,0.19]  median share from steps 48-49: 0.69
+   eps10  k= 55 n= 50  caught   26.7 ± 11.9  P(ign)=0.24 [0.14,0.37]  median share from steps 48-49: 0.70
+   eps10  k= 60 n= 50  caught   23.2 ± 12.1  P(ign)=0.20 [0.11,0.33]  median share from steps 48-49: 0.73
+   eps10  k= 65 n= 50  caught   31.3 ± 14.4  P(ign)=0.36 [0.24,0.50]  median share from steps 48-49: 0.76
+   eps10  k= 70 n= 50  caught   33.2 ± 14.3  P(ign)=0.32 [0.21,0.46]  median share from steps 48-49: 0.75
+   eps10  k= 75 n= 50  caught   40.4 ± 16.9  P(ign)=0.52 [0.39,0.65]  median share from steps 48-49: 0.77
+   eps10  k= 80 n= 50  caught   39.2 ± 18.6  P(ign)=0.48 [0.35,0.61]  median share from steps 48-49: 0.80
+   eps10  k= 85 n= 50  caught   36.1 ± 13.8  P(ign)=0.44 [0.31,0.58]  median share from steps 48-49: 0.78
+   eps10  k= 90 n= 50  caught   31.7 ±  9.2  P(ign)=0.28 [0.17,0.42]  median share from steps 48-49: 0.79
+   eps10  k= 95 n= 50  caught   40.5 ± 15.4  P(ign)=0.52 [0.39,0.65]  median share from steps 48-49: 0.78
+   eps10  k=100 n= 50  caught   49.5 ± 16.2  P(ign)=0.78 [0.65,0.87]  median share from steps 48-49: 0.78
+   eps20  k= 50 n= 50  caught   18.5 ±  8.1  P(ign)=0.06 [0.02,0.16]  median share from steps 48-49: 0.69
+   eps20  k= 55 n= 50  caught   21.9 ±  9.5  P(ign)=0.10 [0.04,0.21]  median share from steps 48-49: 0.67
+   eps20  k= 60 n= 50  caught   26.1 ± 13.8  P(ign)=0.24 [0.14,0.37]  median share from steps 48-49: 0.73
+   eps20  k= 65 n= 50  caught   29.0 ± 13.6  P(ign)=0.28 [0.17,0.42]  median share from steps 48-49: 0.68
+   eps20  k= 70 n= 50  caught   33.1 ± 14.4  P(ign)=0.36 [0.24,0.50]  median share from steps 48-49: 0.72
+   eps20  k= 75 n= 50  caught   37.8 ± 16.9  P(ign)=0.50 [0.37,0.63]  median share from steps 48-49: 0.74
+   eps20  k= 80 n= 50  caught   36.0 ± 13.4  P(ign)=0.48 [0.35,0.61]  median share from steps 48-49: 0.72
+   eps20  k= 85 n= 50  caught   35.5 ± 13.2  P(ign)=0.46 [0.33,0.60]  median share from steps 48-49: 0.74
+   eps20  k= 90 n= 50  caught   38.8 ± 14.1  P(ign)=0.52 [0.39,0.65]  median share from steps 48-49: 0.79
+   eps20  k= 95 n= 50  caught   41.7 ± 15.2  P(ign)=0.58 [0.44,0.71]  median share from steps 48-49: 0.80
+   eps20  k=100 n= 50  caught   42.1 ± 14.6  P(ign)=0.64 [0.50,0.76]  median share from steps 48-49: 0.79
+   greedy k= 50 n=  1  caught   10.0         P(ign)=0.00 [0.00,0.79]  median share from steps 48-49: 0.80
+   greedy k= 55 n=  1  caught   15.0         P(ign)=0.00 [0.00,0.79]  median share from steps 48-49: 0.73
+   greedy k= 60 n=  1  caught   27.0         P(ign)=0.00 [0.00,0.79]  median share from steps 48-49: 0.74
+   greedy k= 65 n=  1  caught   18.0         P(ign)=0.00 [0.00,0.79]  median share from steps 48-49: 0.72
+   greedy k= 70 n=  1  caught   23.0         P(ign)=0.00 [0.00,0.79]  median share from steps 48-49: 0.78
+   greedy k= 75 n=  1  caught   19.0         P(ign)=0.00 [0.00,0.79]  median share from steps 48-49: 0.79
+   greedy k= 80 n=  1  caught   28.0         P(ign)=0.00 [0.00,0.79]  median share from steps 48-49: 0.86
+   greedy k= 85 n=  1  caught   28.0         P(ign)=0.00 [0.00,0.79]  median share from steps 48-49: 0.79
+   greedy k= 90 n=  1  caught   21.0         P(ign)=0.00 [0.00,0.79]  median share from steps 48-49: 0.86
+   greedy k= 95 n=  1  caught   52.0         P(ign)=1.00 [0.21,1.00]  median share from steps 48-49: 0.87
+   greedy k=100 n=  1  caught   55.0         P(ign)=1.00 [0.21,1.00]  median share from steps 48-49: 0.85
+
+== Ignition: ignite_boot  (ignited := caught_inv >= 35; Wilson 95% CI)
+   eps10  k= 50 n= 40  caught   20.1 ± 10.6  P(ign)=0.12 [0.05,0.26]  median share from steps 48-49: 0.71
+   eps10  k= 55 n= 40  caught   22.2 ± 11.6  P(ign)=0.15 [0.07,0.29]  median share from steps 48-49: 0.68
+   eps10  k= 60 n= 40  caught   23.4 ± 10.9  P(ign)=0.17 [0.09,0.32]  median share from steps 48-49: 0.71
+   eps10  k= 65 n= 40  caught   22.8 ± 10.6  P(ign)=0.15 [0.07,0.29]  median share from steps 48-49: 0.72
+   eps10  k= 70 n= 40  caught   27.7 ± 11.6  P(ign)=0.33 [0.20,0.48]  median share from steps 48-49: 0.77
+   eps10  k= 75 n= 40  caught   28.4 ± 10.1  P(ign)=0.28 [0.16,0.43]  median share from steps 48-49: 0.79
+   eps10  k= 80 n= 40  caught   31.1 ±  9.9  P(ign)=0.35 [0.22,0.50]  median share from steps 48-49: 0.77
+   eps10  k= 85 n= 40  caught   35.2 ±  9.7  P(ign)=0.45 [0.31,0.60]  median share from steps 48-49: 0.81
+   eps10  k= 90 n= 40  caught   35.8 ± 11.9  P(ign)=0.40 [0.26,0.55]  median share from steps 48-49: 0.77
+   eps10  k= 95 n= 40  caught   38.2 ± 12.7  P(ign)=0.55 [0.40,0.69]  median share from steps 48-49: 0.77
+   eps10  k=100 n= 40  caught   45.9 ± 14.7  P(ign)=0.75 [0.60,0.86]  median share from steps 48-49: 0.77
+   eps20  k= 50 n= 40  caught   18.3 ±  8.7  P(ign)=0.07 [0.03,0.20]  median share from steps 48-49: 0.71
+   eps20  k= 55 n= 40  caught   19.9 ± 10.0  P(ign)=0.12 [0.05,0.26]  median share from steps 48-49: 0.67
+   eps20  k= 60 n= 40  caught   22.6 ± 13.7  P(ign)=0.12 [0.05,0.26]  median share from steps 48-49: 0.76
+   eps20  k= 65 n= 40  caught   24.6 ± 12.6  P(ign)=0.17 [0.09,0.32]  median share from steps 48-49: 0.73
+   eps20  k= 70 n= 40  caught   29.1 ± 14.7  P(ign)=0.28 [0.16,0.43]  median share from steps 48-49: 0.72
+   eps20  k= 75 n= 40  caught   30.8 ± 13.4  P(ign)=0.33 [0.20,0.48]  median share from steps 48-49: 0.73
+   eps20  k= 80 n= 40  caught   31.6 ± 12.5  P(ign)=0.35 [0.22,0.50]  median share from steps 48-49: 0.77
+   eps20  k= 85 n= 40  caught   39.5 ± 16.6  P(ign)=0.57 [0.42,0.71]  median share from steps 48-49: 0.78
+   eps20  k= 90 n= 40  caught   37.9 ± 12.0  P(ign)=0.57 [0.42,0.71]  median share from steps 48-49: 0.79
+   eps20  k= 95 n= 40  caught   41.5 ± 14.5  P(ign)=0.62 [0.47,0.76]  median share from steps 48-49: 0.81
+   eps20  k=100 n= 40  caught   47.8 ± 16.6  P(ign)=0.80 [0.65,0.90]  median share from steps 48-49: 0.77
+   greedy k= 50 n= 40  caught   17.9 ±  8.2  P(ign)=0.07 [0.03,0.20]  median share from steps 48-49: 0.66
+   greedy k= 55 n= 40  caught   22.3 ± 11.6  P(ign)=0.12 [0.05,0.26]  median share from steps 48-49: 0.68
+   greedy k= 60 n= 40  caught   20.9 ± 11.5  P(ign)=0.15 [0.07,0.29]  median share from steps 48-49: 0.68
+   greedy k= 65 n= 40  caught   22.2 ± 10.4  P(ign)=0.10 [0.04,0.23]  median share from steps 48-49: 0.72
+   greedy k= 70 n= 40  caught   24.5 ± 10.0  P(ign)=0.17 [0.09,0.32]  median share from steps 48-49: 0.73
+   greedy k= 75 n= 40  caught   25.4 ± 10.6  P(ign)=0.20 [0.10,0.35]  median share from steps 48-49: 0.77
+   greedy k= 80 n= 40  caught   26.5 ±  7.7  P(ign)=0.10 [0.04,0.23]  median share from steps 48-49: 0.76
+   greedy k= 85 n= 40  caught   33.1 ± 13.8  P(ign)=0.30 [0.18,0.45]  median share from steps 48-49: 0.80
+   greedy k= 90 n= 40  caught   35.4 ± 11.9  P(ign)=0.50 [0.35,0.65]  median share from steps 48-49: 0.79
+   greedy k= 95 n= 40  caught   38.1 ±  9.5  P(ign)=0.68 [0.52,0.80]  median share from steps 48-49: 0.78
+   greedy k=100 n= 40  caught   43.1 ± 12.9  P(ign)=0.68 [0.52,0.80]  median share from steps 48-49: 0.76
+   paired (same bootstrap sample) differences, mean [95% CI]:
+     k= 50 eps10-greedy:   +2.1 [ -18.1,  +23.3]
+     k= 50 eps20-greedy:   +0.3 [ -18.1,  +29.0]
+     k= 55 eps10-greedy:   -0.1 [ -23.4,  +36.0]
+     k= 55 eps20-greedy:   -2.4 [ -27.0,  +26.1]
+     k= 60 eps10-greedy:   +2.5 [ -24.4,  +26.3]
+     k= 60 eps20-greedy:   +1.6 [ -25.1,  +53.2]
+     k= 65 eps10-greedy:   +0.6 [ -20.5,  +25.2]
+     k= 65 eps20-greedy:   +2.4 [ -30.2,  +32.0]
+     k= 70 eps10-greedy:   +3.2 [ -20.4,  +22.2]
+     k= 70 eps20-greedy:   +4.7 [ -28.1,  +41.0]
+     k= 75 eps10-greedy:   +3.1 [ -23.1,  +26.1]
+     k= 75 eps20-greedy:   +5.4 [ -16.1,  +37.3]
+     k= 80 eps10-greedy:   +4.6 [ -17.0,  +31.0]
+     k= 80 eps20-greedy:   +5.1 [ -13.5,  +33.0]
+     k= 85 eps10-greedy:   +2.1 [ -31.5,  +28.1]
+     k= 85 eps20-greedy:   +6.3 [ -38.2,  +42.2]
+     k= 90 eps10-greedy:   +0.4 [ -33.0,  +41.0]
+     k= 90 eps20-greedy:   +2.5 [ -19.5,  +30.0]
+     k= 95 eps10-greedy:   +0.1 [ -26.2,  +25.2]
+     k= 95 eps20-greedy:   +3.4 [ -20.2,  +31.6]
+     k=100 eps10-greedy:   +2.9 [ -28.1,  +29.2]
+     k=100 eps20-greedy:   +4.7 [ -23.1,  +51.1]
+
+== Mediation: pooled (paper Fig. 7 right) vs within-step
+   pooled median PR-AUC by acquired-positives bin, with mean step and prevalence in the bin:
+     (-1, 0]      n= 1759 PR-AUC 0.024  mean step 43.3  prev 0.017  lift 1.38
+     (0, 5]       n= 3670 PR-AUC 0.053  mean step 45.8  prev 0.018  lift 2.16
+     (5, 10]      n= 1773 PR-AUC 0.123  mean step 47.0  prev 0.042  lift 2.03
+     (10, 20]     n= 1006 PR-AUC 0.224  mean step 48.6  prev 0.101  lift 2.07
+     (20, 40]     n=  416 PR-AUC 0.314  mean step 49.0  prev 0.117  lift 2.68
+     (40, 80]     n=   14 PR-AUC 0.466  mean step 49.0  prev 0.118  lift 3.96
+   within-step Spearman(cum_pos_before, PR-AUC), by policy:
+     t=43 prev=0.018  
+     t=44 prev=0.015  eps10:+0.05  eps20:+0.17  eps40:+0.39  stratified:+0.03
+     t=45 prev=0.004  eps10:+0.27  eps20:+0.33  eps40:+0.49  greedy:+0.91  stratified:+0.43
+     t=46 prev=0.003  eps10:+0.25  eps20:+0.21  eps40:+0.12  greedy:+0.51  stratified:+0.20
+     t=47 prev=0.026  eps10:+0.39  eps20:+0.40  eps40:+0.41  greedy:+0.46  stratified:+0.60
+     t=48 prev=0.076  eps10:+0.47  eps20:+0.43  eps40:+0.51  greedy:+0.65  stratified:+0.51
+     t=49 prev=0.118  eps10:+0.57  eps20:+0.61  eps40:+0.42  greedy:+0.59  novelty:-0.50  stratified:+0.57
+   OLS log(lift) ~ log1p(acquired) + step FE + policy FE (steps 47-49, n=3702):
+     slope on log1p(acquired) = 0.465 (SE 0.016, p=1.7e-191)
+     C(policy)[T.eps20]               +0.032 (p=0.04)
+     C(policy)[T.eps40]               +0.092 (p=0.04)
+     C(policy)[T.greedy]              -0.173 (p=0.00)
+     C(policy)[T.novelty]             -0.112 (p=0.00)
+     C(policy)[T.stratified]          +0.069 (p=0.03)
+     policy x acquired interaction: F=1.54, p=0.17
